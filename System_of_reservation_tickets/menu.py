@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 class Menu:
     def __init__(self):
         self.__option = '0'
@@ -14,7 +15,9 @@ class Menu:
             case '1':
                 message += 'Wybrano cennik'
             case '2':
-                message += 'Wybrano repertuar'
+                now = datetime.today().weekday()
+                end_date_week = (datetime.today() - timedelta(days=6 - now)).strftime("%Y-%m-%d")
+                message += f'Repertuar na aktualny tydzień {datetime.today().strftime("%Y-%m-%d")} - {end_date_week}'
             case '3':
                 message += 'Wybrano wyświetl koszyk'
             case _:
